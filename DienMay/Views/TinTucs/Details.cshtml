@@ -1,0 +1,18 @@
+﻿@model DienMay.Models.TinTuc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h2><b>@Model.TieuDe</b></h2>
+    <img width="200" src="~/HinhAnh/@Model.Hinh" />
+    <p>
+        @Model.NoiDung
+    </p>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaTinTuc }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

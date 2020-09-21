@@ -1,0 +1,43 @@
+﻿@model IEnumerable<DienMay.Models.SanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+@Html.Partial("_QuangCaoPartial")
+@Html.Partial("_KMPartial")
+
+<div class="owl-sale">
+    <div class="Tilte">
+        <h2 class="Title-item">
+            SẢN PHẨM
+        </h2>
+    </div>
+    <div class="row KM-Group">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-2">
+                <div class="card h-100 text-center">
+                    <div class="Item-KM">
+                        <img class="Item-Img" src="~/HinhAnh/@item.HinhAnh" alt="" />
+                        @Html.ActionLink(item.TenSanPham, "Details", "SanPhams", new { id = item.ID }, null)
+                        <p>@item.GiaSanPham đ</p>
+                        @if (User.IsInRole("SuperAdmin"))
+                        {
+                            <p>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                            </p>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<span>
+    <img class="Img-QC" style="width:33%" src="~/HinhAnh/3_43.png" />
+    <img class="Img-QC" style="width:33%" src="~/HinhAnh/3_43.png" />
+    <img class="Img-QC" style="width:33%" src="~/HinhAnh/3_43.png" />
+</span>

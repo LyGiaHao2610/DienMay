@@ -1,0 +1,218 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 0px;
+    padding-right: 0px;
+    
+
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+* {
+    font-size: 12px;
+    font-family: 'Varela Round', sans-serif;
+}
+body {
+    background-color:azure;
+}
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.navbar-inverse {
+    background-color: #00aeef;
+    border-color: #00aeef;
+    margin-bottom: 0px;
+}
+.Home {
+    margin: 5px 0px 5px 0px;
+    height: 50px;
+    width: auto;
+}
+.Head-img {
+    background-color: #fff200;
+    margin-top:500px;
+    border:none;
+}
+.ul-item{
+    width:370px;
+}
+.ul-item form{
+    margin-left: 40px;
+    margin-top:15px;
+    background-color: white;
+    border-radius:5px;
+    height:30px;
+}
+.ul-item form p #searchString {
+    margin-left:5px;
+    margin-top:5px;
+    border:none;
+    width:90%;
+    height:95%;
+    
+}
+.ul-item form p #searchString:focus {
+    outline: 0;
+}
+.ul-item form p .btntop {
+    background-color: transparent;
+    border: none;
+    margin-top: 5px;
+    width: 20px;
+}
+.ul-item-2 {
+    width: 120px;
+    border:solid 1px white;
+    border-radius:5px;
+    padding-top: 0px;
+    height: 60px;
+    margin-left: 20px;
+}
+
+.ul-item-2:hover {
+    background: #0199d1;
+    border-radius:5px;
+}
+.cart-hover{
+    margin-top:20px;
+    text-align:center;
+}
+.cart-item{
+    color:white;
+    font-weight:bold;
+}
+.cart-item:hover {
+    color: white;
+    font-weight: bold;   
+    text-decoration:none;
+}
+.ul-item-3 {
+    width: 120px;
+    padding-top: 0px;
+    height: 60px;
+}
+.ul-item-3:hover {
+    background-color: white;
+}
+.cart-item-2{
+    color:white;
+    font-weight:bold;
+}
+.ul-item-3:hover .cart-item-2 {
+    color: #0199d1;
+    font-weight: bold;
+    text-decoration: none;
+}
+.ul-item-4 {
+    width: 150px;
+    padding-top: 0px;
+    height: 60px;
+}
+
+.ul-item-4:hover {
+    background-color: white;
+}
+
+.cart-item-2 {
+    color: white;
+    font-weight: bold;
+}
+.cart-hover-2 {
+    margin-top: 10px;
+    text-align: center;
+}
+.ul-item-4:hover .cart-item-2 {
+    color: #0199d1;
+    font-weight: bold;
+    text-decoration: none;
+}
+.show1 {
+    text-align: center;
+    margin: 15px 0px 15px 0px;
+}
+
+.mySlides {
+    width: 100%;
+    height: 300px;
+}
+
+.show1 div {
+    width: 100%;
+    border-right: 1px solid #ebebeb;
+}
+
+.demo {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.show1 div:hover {
+    width: 100%;
+    border-bottom: 2px solid #c08d00;
+}
+
+.show1 div a:hover {
+    text-decoration: none;
+    color: #c08d00;
+}
+.footer {
+    background-color: #c08d00;
+}
+.footer-item {
+    background-color: #fff200;
+}
+.cart-detail{
+    margin-top:5px;
+    background-color:white;
+
+}
+.detail-item{
+    width:100%;
+    height:auto;
+}
+.detail-tilte{
+    font-weight:bold;
+
+}
+.Detail-name {
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 50px;
+}
+.Detail-price {
+    font-weight: bold;
+    font-size: 18px;
+    color: red;
+    margin-top: 50px;
+}
+.tgop{
+    background-color:#f35f12;
+    color:white;
+    font-weight:bold;
+    padding: 2px;
+    border-radius:2px;
+}
+.buynow {
+    background-color: #00aeef;
+    border-radius: 5px;
+    border-color: #00aeef;
+    width: 49%;
+    height: 50px;
+    color: white;
+    font-weight: bold;
+}
+.buynow :focus {
+    outline: 0;
+}
+.detail-img{
+    width: 100%;
+    height:auto;
+}

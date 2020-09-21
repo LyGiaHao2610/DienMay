@@ -1,0 +1,37 @@
+﻿@model DienMay.Models.SanPham
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="cart-detail">
+    <div class="row">
+        <div class="col-sm-4">
+            <img class="detail-img" width="100%" src="~/HinhAnh/@Model.HinhAnh"/>
+            
+        </div>
+        <div class="col-sm-8">
+            <h1 class="Detail-tilte">
+                @Model.TenSanPham
+            </h1>
+            <hr />
+            <span class="Detail-name">Mã Sản Phẩm: </span>@Model.ID <br />
+            <span class="Detail-price">@Model.GiaSanPham  </span> <br />
+            <span class="tgop">Trả góp 0%</span>  <br /> <br />
+            <span class="Detail-name">Hãng sản xuất: </span>@Model.HangSanXuat.TenHang <br />
+            <span class="Detail-name">Tính năng: </span>@Model.TinhNang <br />
+            <span class="Detail-name">Mô tả: </span>@Model.Mota <br />
+            <br />
+            @if (Model.SoLuong > 0)
+            {
+                using (Html.BeginForm("AddToCart", "SanPhams", new { id = Model.ID },FormMethod.Post))
+                {
+                    <input class="buynow" value="MUA NGAY" type="submit" />
+                }
+
+            }
+
+        </div>
+    </div>
+</div>
+

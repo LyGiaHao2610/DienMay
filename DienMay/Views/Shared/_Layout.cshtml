@@ -1,0 +1,154 @@
+﻿@using DienMay.Models
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/9f6f80da6b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    @{
+        ApplicationDbContext db = new ApplicationDbContext();
+    }
+</head>
+<body >
+    <div class="navbar navbar-inverse">
+        <div style="width:100%;background-color: #fff200">
+            <div class="container">
+                <img src="~/HinhAnh/quangcaohead.png" />
+            </div>
+        </div>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="/SanPhams/Index"><img class="Home" src="~/HinhAnh/logo.png" /></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav ">
+                    <li class="ul-item">
+                        @using (Html.BeginForm("Index", "SanPhams", FormMethod.Get))
+                        {
+                            <p>
+                                <input id="searchString" name="searchString" type="text" value="" placeholder="Bạn muốn tìm gì...">
+                                <button class="btntop" type="submit"><i class="fas fa-search"></i></button>
+                            </p>
+                        }
+                    </li>
+                    <li class="ul-item-2 dropdown">
+                        <div class="cart-hover">
+                            <a data-toggle="dropdown" class="dropdown-toggle cart-item" href="/Home/About"><i class="fas fa-cart-plus"></i><span> Giỏ hàng<b class="caret"></b></span></a>
+                            <ul class="dropdown-menu">
+                                @if (Session["cart"] != null)
+                                {
+                                    foreach (Item item in (List<Item>)Session["cart"])
+                                    {
+                                        <li>
+                                            <span><a href="@Url.Action("Checkout","SanPhams")">@item.SanPham.TenSanPham (@item.Quantity) </a>
+                                            <a href="@Url.Action("Checkout","SanPhams", new { id = item.SanPham.ID})"><i class="far fa-trash-alt"></i></a></span>
+                                        </li>
+
+                                    }
+
+                                }                               
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="ul-item-3">
+                        <div class="cart-hover">
+                            <a class="cart-item-2" href="@Url.Action("Index","TinTucs")"><span>TIN CÔNG NGHỆ</span></a>
+                        </div>
+                    </li>
+                    <li class="ul-item-4">
+                        <div class="cart-hover-2">
+                            <a class="cart-item-2" href="#">HOTLINE: 18009900<br />Tổng đài miễn phí</a>
+                        </div>
+                    </li>
+                    @if (User.IsInRole("SuperAdmin"))
+                    {
+                        <li class="ul-item-4">
+                            <div class="cart-hover-2">
+                                <a class="cart-item-2" href="/Home/About">QUẢN LÝ</a>
+                            </div>
+                        </li>
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <!-- Footer -->
+        <!-- Footer -->
+    </div>
+    <div class="footer">
+        <footer class="footer text-center">
+            <div class="row footer-item">
+                <div class="col-md-4 mb-5 mb-lg-0">
+                    <h4>Gọi mua hàng</h4>
+                    <p>
+                        1800.1060 (7:30 - 22:00)
+                        <br />
+
+                    </p>
+                </div>
+                <div class="col-md-4 mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">THEO DÕI CHÚNG TÔI</h4>
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fa fa-fw fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fa fa-fw fa-google-plus"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fa fa-fw fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fa fa-fw fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fa fa-fw fa-dribbble"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Nội dung liên hệ</h4>
+                    <p>
+                        This is a sample page created to demonstrate Converting Bootstrap Theme to WordPress
+                        (<a href="http://youtube.com"><i class="fab fa-youtube"></i></a>)
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <div class="copyright py-4 text-center text-white">
+            <small>Copyright &copy;<?php echo bloginfo('name') ?> <?php echo date('Y') ?></small>
+        </div>
+
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

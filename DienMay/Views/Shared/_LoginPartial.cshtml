@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNet.Identity
+<style>
+    .item-login{
+        text-align:center;
+    }
+    .fa-user-circle:hover {
+        color: #fff200;
+    }
+    .fa-user-circle{
+        color:white;
+        font-size:20px;
+        margin-top:5px;
+    }
+    .item-login a{
+        font-weight:bold;
+        color:white;
+
+    }
+    .item-login a:hover {
+        text-decoration: none;
+        color: #fff200;
+    }
+</style>
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li class="item-login"><span><i class="fas fa-user-circle"></i><br /><a href="javascript:document.getElementById('logoutForm').submit()">Đăng Xuất</a></span></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li class="item-login"><span><i class="fas fa-user-circle"></i><br />@Html.ActionLink("Đăng nhập", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</span> </li>
+    </ul>
+}

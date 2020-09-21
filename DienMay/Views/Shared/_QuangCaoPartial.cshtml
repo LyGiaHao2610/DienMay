@@ -1,0 +1,93 @@
+﻿@using DienMay.Models
+
+@{
+    ApplicationDbContext db = new ApplicationDbContext();
+}
+<style>
+    .col-sm-3{
+        padding:0px;
+    }
+    .QC {
+        background: rgb(186,200,43);
+        background: linear-gradient(90deg, rgba(186,200,43,0.49933476808692223) 0%, rgba(104,104,247,0.5049370089832808) 31%, rgba(247,188,194,0.5049370089832808) 66%, rgba(1,255,0,0.5021358885351015) 100%);
+    }
+    .group-DM {
+        border: none;
+    }
+    .DM {
+        background-color: #fff200;
+        font-weight: bold;
+    }
+    .item-danhmuc:hover{
+        text-decoration:none;
+    }
+    .item:hover {
+        background-color: #0199d1;
+        font-weight: bold;
+    }
+    .item:hover .item-danhmuc {
+        color: #fff200;
+    }
+    .TT {
+        font-weight: bold;
+        background-color: #fff200;
+    }
+    .Img-QC{
+        margin-top:20px;
+        width:100%;
+    }
+</style>
+<div class="row QC">
+    <div class="col-sm-3">
+        <ul class="list-group group-DM">
+            <li class="list-group-item DM">DANH MỤC</li>
+            @foreach (var item in db.categories)
+            {
+                <li class="list-group-item item">
+                    <a class="item-danhmuc" href="@Url.Action("Details","Categories",new { id = item.CategoryID })">@item.CategoryName</a>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col-sm-6">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                @foreach (var item in db.quangCaos)
+                {
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="~/HinhAnh/@item.Hinh" alt="#">
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>@item.TenQuangCao</h5>
+                    </div>
+                }
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </div>
+    <div class="col-sm-3">
+        <ul class="list-group group-TT">
+            <li class="list-group-item TT">TIN CÔNG NGHỆ</li>
+            @foreach (var item in db.tinTucs)
+            {
+                <li class="list-group-item item-TT">
+                    <span><img width="40" src="~/HinhAnh/@item.Hinh" /></span>
+                    <a class="item-tintuc" href="@Url.Action("Details","TinTucs",new { id = item.MaTinTuc })">@item.TieuDe</a>
+                    <hr />
+                </li>
+                
+            }
+        </ul>
+    </div>
+    <div class="Img-QC">
+        <img class="Img-QC" src="~/HinhAnh/laptop-chung-1200-75-1200x75.png" />
+    </div>
+</div>

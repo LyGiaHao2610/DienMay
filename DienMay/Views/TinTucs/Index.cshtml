@@ -1,0 +1,28 @@
+﻿@model IEnumerable<DienMay.Models.TinTuc>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<ul class="list-group group-TT">
+    <li class="list-group-item TT">TIN CÔNG NGHỆ</li>
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item item-TT">
+            <span><img width="80" src="~/HinhAnh/@item.Hinh" /></span>
+            <a class="item-tintuc" href="@Url.Action("Details","TinTucs",new { id = item.MaTinTuc })">@item.TieuDe</a>
+            <hr />
+            @if (User.IsInRole("SuperAdmin"))
+            {
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaTinTuc }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MaTinTuc }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaTinTuc })
+                </p>
+            }
+
+        </li>
+
+    }
+</ul>
+

@@ -1,0 +1,91 @@
+﻿@using DienMay.Models
+
+@{
+    ApplicationDbContext db = new ApplicationDbContext();
+}
+<style>
+    .KM-Group {
+        padding: 0px;
+        margin: 0px;
+        background-color: white;
+    }
+    .col-sm-2{
+        padding:0px;
+        
+    }
+    .owl-sale {
+        background: rgb(186,200,43);
+        background: linear-gradient(90deg, rgba(186,200,43,0.49933476808692223) 0%, rgba(104,104,247,0.5049370089832808) 31%, rgba(247,188,194,0.5049370089832808) 66%, rgba(1,255,0,0.5021358885351015) 100%);
+    }
+    .Tilte {
+        width: 100%;
+        background-color: #fff200;
+        padding: 5px 0px 5px 0px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .Title-item {
+        width: 100%;
+        text-align: center;
+        color: #0199d1;
+        font-weight: bold;
+        font-size: large;
+    }
+    .text-center {
+        border-right: solid 1px #c5e9e8;
+    }
+    .text-center:hover {
+        box-shadow: 2px 2px 2px #ebebeb;
+    }
+    .text-center:hover a{
+        font-weight:bold;
+        text-decoration:none;
+        color:blue;
+    }
+    .Item-Img {
+        margin: 3px; 
+        width: 95%; 
+        height: auto;
+    }
+    .Item-KM a {
+        font-size: 14px;
+        margin-bottom: 2px;
+        text-align: left;
+    }
+    .Item-KM p{
+        color: red;
+        font-weight:bold;
+        text-align:right;
+    }
+
+</style>
+<script>
+    $(document).ready(function () {
+
+        $("#owl-demo").owlCarousel({
+            navigation: true
+        });
+
+    });
+</script>
+<div id="owl-demo" class="owl-sale">
+    <div class="Tilte">
+        <h3 class="Title-item">
+            GIÁ SỐC CUỐI TUẦN
+        </h3>
+    </div>
+    <div class="row KM-Group">
+        @foreach (var item in db.sanPhams)
+        {
+            <div class="col-sm-2">
+                <div class="card h-100 text-center">
+                    <div class="Item-KM">
+                        <img class="Item-Img" src="~/HinhAnh/@item.HinhAnh"  alt="" />
+                        @Html.ActionLink(item.TenSanPham, "Details", "SanPhams", new { id = item.ID }, null)
+                        <p>@item.GiaSanPham đ</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
